@@ -3,11 +3,19 @@ package com.restaurant.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.restaurant.dao.MenuRepository;
+import com.restaurant.dataObjects.MenuCategoriesEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
+
+    private final MenuRepository menuRepository;
+
+    public HelloController(MenuRepository menuRepository) {
+        this.menuRepository = menuRepository;
+    }
 
     @GetMapping("/hello")
     public String hello() {
@@ -20,14 +28,7 @@ public class HelloController {
     }
     
     @GetMapping("/restaurants")
-    public List<String> restaurantNames() {
-        List<String> restaurants = new ArrayList<>();
-        restaurants.add("Dominos");
-        restaurants.add("Pizza Hut");
-        restaurants.add("LaPino's Pizza");
-        restaurants.add("ChicagoPizza");
-        
-        return restaurants;
-        }
-
+    public List<MenuCategoriesEntity> restaurantNames() {
+        return menuRepository.findAll();
+    }
 }

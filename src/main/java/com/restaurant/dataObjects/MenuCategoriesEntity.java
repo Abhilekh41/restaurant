@@ -1,5 +1,6 @@
 package com.restaurant.dataObjects;
 
+import com.restaurant.objects.MenuCategoryItems;
 import com.restaurant.utils.RubroTypeConverter;
 import jakarta.persistence.*;
 import lombok.Getter;

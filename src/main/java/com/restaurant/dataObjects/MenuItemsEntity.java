@@ -25,12 +25,9 @@ public class MenuItemsEntity{
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
-
-    
     
     @Column(name = "categoryId", nullable = false)
     private UUID categoryId;
-
 
     @Convert(converter = RubroTypeConverter.class)
     @Column(name = "rubro", nullable = false, columnDefinition = "rubro_type")
@@ -68,11 +65,5 @@ public class MenuItemsEntity{
 
     @Column(name = "updatedAt", nullable = false)
     private OffsetDateTime updatedAt;
-
-
-
-
-
-
 }
 

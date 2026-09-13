@@ -1,12 +1,16 @@
 package com.restaurant.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.stereotype.Repository;
+
 import com.restaurant.dataObjects.MenuCategoriesEntity;
 import com.restaurant.dataObjects.MenuItemsEntity;
 import com.restaurant.objects.MenuCategoryItems;
 import com.restaurant.utils.EntityToPojoConverter;
-import org.springframework.stereotype.Repository;
-
-import java.util.*;
 
 @Repository
 public class MenuRepository {
@@ -27,4 +31,28 @@ public class MenuRepository {
         }
         return null;
     }
+
+    public List<MenuCategoryItems> findMenuCategoryItemsByDisplayOrder(Integer displayOrder){
+        List<MenuCategoriesEntity> menuCategoriesEntities = menuCategoriesRepository.findByDisplayOrder(displayOrder);
+
+        List<MenuCategoryItems> menuCategoryItemsList = new ArrayList<>();
+
+        for (MenuCategoriesEntity menuCategory : menuCategoriesEntities ){
+            List<MenuItemsEntity> menuItemsEntities = menuItemRepository.findByCategoryId(menuCategory.getId());
+
+            MenuCategoryItems menuCategoryItems = EntityToPojoConverter.toMenuCategoryItems(menuCategory, menuItemsEntities);
+        
+            menuCategoryItemsList.add(menuCategoryItems);
+        }
+
+       
+
+
+
+        return menuCategoryItemsList;
+    }
+
+    
+
+    
 }

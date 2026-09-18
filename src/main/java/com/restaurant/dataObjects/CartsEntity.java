@@ -26,6 +26,7 @@ public class CartsEntity {
     @Column(name = "rubro", nullable = false, columnDefinition = "rubro_type")
     private RubroType rubro;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "fulfillmentType")
     private FulfillmentType fulfillmentType;
 

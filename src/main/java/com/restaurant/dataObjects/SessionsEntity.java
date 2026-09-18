@@ -24,16 +24,16 @@ public class SessionsEntity {
     private UUID customerId;
 
     @Convert(converter = RubroTypeConverter.class)
-    @Column(name = "acitveRubro", columnDefinition = "rubro_type")
+    @Column(name = "activeRubro", columnDefinition = "rubro_type")
     private RubroType activeRubro;
 
-    @Column(name = "conersationState", nullable = false)
+    @Column(name = "conversationState", nullable = false)
     private String conversationState;
 
     @Column(name = "activeCartId")
     private UUID activeCartId;
 
-    @Column(name = "context", nullable = false)
+    @Column(name = "context", nullable = false, columnDefinition = "TEXT")
     private String context;
 
     @Column(name = "lastMessageAt", nullable = false)

@@ -1,5 +1,6 @@
 package com.restaurant.dataObjects;
 
+import com.restaurant.utils.RubroTypeConverter;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -27,23 +28,23 @@ public class OrdersEntity {
     @Column(name = "cart_id", unique = true)
     private UUID cartId;
 
-    
+    @Convert(converter = RubroTypeConverter.class)
     @Column(name = "rubro", nullable = false)
     private RubroType rubro;
 
-    
+    @Enumerated(EnumType.STRING)
     @Column(name = "fulfillment_type", nullable = false)
     private FulfillmentType fulfillmentType;
 
-    
+    @Enumerated(EnumType.STRING)
     @Column(name = "payment_method", nullable = false)
     private PaymentMethodType paymentMethod;
 
-    
+    @Enumerated(EnumType.STRING)
     @Column(name = "payment_status", nullable = false)
     private PaymentStatusType paymentStatus;
 
-    
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private OrderStatusType status;
 
@@ -80,7 +81,7 @@ public class OrdersEntity {
     @Column(name = "change_window_ends_at")
     private OffsetDateTime changeWindowEndsAt;
 
-    @Column(name = "metadata")
+    @Column(name = "metadata", columnDefinition = "TEXT")
     private String metadata;
 
     @Column(name = "created_at", nullable = false)

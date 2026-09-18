@@ -27,7 +27,7 @@ public class CartItemsEntity {
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "selectedOptions", nullable = false)
+    @Column(name = "selectedOptions", nullable = false, columnDefinition = "TEXT")
     private String selectedOptions;
 
     @Column(name = "notes")

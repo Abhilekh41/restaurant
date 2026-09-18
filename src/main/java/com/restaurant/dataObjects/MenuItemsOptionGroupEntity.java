@@ -1,24 +1,24 @@
 package com.restaurant.dataObjects;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.Embeddable;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 
-@Entity
-@Table(name = "menu_item_option_groups")
+@Embeddable
 @Getter
 @Setter
-public class MenuItemsOptionGroupEntity {
+@EqualsAndHashCode
+public class MenuItemsOptionGroupEntity implements Serializable {
 
-    @Column(name = "menuItemId", nullable = false, updatable = false)
+    @Column(name = "menuItemId")
     private UUID menuItemId;
 
-    @Column(name = "optionGroupId", nullable = false, updatable = false)
+    @Column(name = "optionGroupId")
     private UUID optionGroupId;
-    
 }
